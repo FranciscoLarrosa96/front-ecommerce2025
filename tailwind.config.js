@@ -14,7 +14,7 @@ module.exports = {
         hover: '#c6006d',
       },
       fontFamily: {
-        sans: ['Urbanist', 'sans-serif'],
+        sans: ['Rajdhani', 'sans-serif'], // esto pisa la fuente por defecto
       },
     },
   },
