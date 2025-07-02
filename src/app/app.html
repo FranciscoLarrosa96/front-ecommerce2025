@@ -1,5 +1,6 @@
 <!-- HEADER PRINCIPAL -->
-<header class="bg-white dark:bg-gray-900 shadow-md py-3 px-4 flex items-center justify-between sticky top-0 z-50">
+<header data-aos="fade-down"
+  class="bg-white dark:bg-gray-900 shadow-md py-3 px-4 flex items-center justify-between sticky top-0 z-50">
   <!-- Logo -->
   <div class="flex items-center gap-2 text-main font-bold text-xl">
     <i class="fas fa-microchip"></i>
@@ -23,11 +24,8 @@
   <div class="flex items-center gap-4">
     <!-- Search -->
     <div class="relative hidden md:block">
-      <input
-        type="text"
-        placeholder="Buscar..."
-        class="pl-10 pr-4 py-2 text-sm rounded-full bg-border dark:bg-gray-800 text-text dark:text-white focus:outline-none focus:ring-2 focus:ring-main"
-      />
+      <input type="text" placeholder="Buscar..."
+        class="pl-10 pr-4 py-2 text-sm rounded-full bg-border dark:bg-gray-800 text-text dark:text-white focus:outline-none focus:ring-2 focus:ring-main" />
       <i class="fas fa-search absolute left-3 top-2.5 text-text dark:text-white text-sm"></i>
     </div>
 
@@ -39,7 +37,8 @@
     <!-- Carrito -->
     <button class="relative text-text dark:text-white hover:text-main">
       <i class="fas fa-shopping-cart"></i>
-      <span class="absolute -top-1 -right-2 text-xs bg-main text-white rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      <span
+        class="absolute -top-1 -right-2 text-xs bg-main text-white rounded-full w-5 h-5 flex items-center justify-center">0</span>
     </button>
 
     <!-- Modo oscuro -->
@@ -50,16 +49,11 @@
 </header>
 
 <!-- DRAWER LATERAL -->
-<div
-  *ngIf="isDrawerOpen"
-  class="fixed inset-0 bg-black bg-opacity-50 z-40"
-  (click)="isDrawerOpen = false"
-  ></div>
+<div *ngIf="isDrawerOpen" class="fixed inset-0 bg-black bg-opacity-50 z-40" (click)="isDrawerOpen = false"></div>
 
-<aside
-  *ngIf="isDrawerOpen"
+<aside *ngIf="isDrawerOpen"
   class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 shadow-md z-50 p-4 transition-transform duration-100"
- data-aos="fade-right">
+  data-aos="fade-right">
   <div class="flex justify-between items-center mb-6">
     <h2 class="text-xl font-bold text-main">Menú</h2>
     <button (click)="isDrawerOpen = false" class="text-xl text-text dark:text-white">
@@ -76,7 +70,64 @@
 </aside>
 
 
-<router-outlet></router-outlet>
+<main class="flex flex-col md:flex-row px-4 md:px-8 py-6 gap-6 bg-background text-text">
+  <!-- FILTROS (Sidebar izquierda) -->
+  <aside data-aos="fade-right" class="w-full md:w-64 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md">
+    <h2 class="text-lg font-bold text-main mb-4">Filtrar por</h2>
+
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Categoría</h3>
+      <div class="flex flex-col gap-1 text-sm">
+        <label><input type="checkbox" class="mr-2"> Placas de Video</label>
+        <label><input type="checkbox" class="mr-2"> Microprocesadores</label>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Marca</h3>
+      <div class="flex flex-col gap-1 text-sm">
+        <label><input type="checkbox" class="mr-2"> Gigabyte</label>
+        <label><input type="checkbox" class="mr-2"> MSI</label>
+        <label><input type="checkbox" class="mr-2"> Asus</label>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Promociones</h3>
+      <div class="flex flex-col gap-1 text-sm">
+        <label><input type="checkbox" class="mr-2"> Winter Sale</label>
+        <label><input type="checkbox" class="mr-2"> Hasta 18 cuotas</label>
+      </div>
+    </div>
+  </aside>
+
+  <!-- GRID DE PRODUCTOS -->
+  <section class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div *ngFor="let producto of productos" class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col"
+      data-aos="fade-up">
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col" data-aos="fade-up">
+        <img [src]="producto.thumb" [alt]="producto.nombre" class="w-full h-40 object-contain mb-3" />
+        <h3 class="font-bold text-base mb-2 min-h-[48px]">
+          {{ producto.nombre }}
+        </h3>
+
+
+        <!-- Bloque precio -->
+        <div class="min-h-[48px] flex flex-col justify-end">
+          <p *ngIf="producto.precioOriginal" class="text-sm text-gray-500 line-through">
+            {{ producto.precioOriginal | currency:'ARS' }}
+          </p>
+          <p class="text-lg font-bold text-main">{{ producto.precio | currency:'ARS' }}</p>
+        </div>
+
+        <!-- Botón siempre abajo -->
+        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm">Ver más</button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-300 py-8" data-aos="fade-up">
