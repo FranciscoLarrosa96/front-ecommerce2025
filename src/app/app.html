@@ -13,12 +13,25 @@
   </button>
 
   <!-- Menú desktop -->
-  <nav class="hidden md:flex items-center gap-6 text-sm text-text dark:text-gray-300">
-    <a href="#" class="hover:text-main">Ofertas</a>
-    <a href="#" class="hover:text-main">Computadoras</a>
-    <a href="#" class="hover:text-main">Placas de video</a>
-    <a href="#" class="hover:text-main">Microprocesadores</a>
+  <nav class="hidden md:flex justify-center items-center gap-8 text-sm text-text dark:text-gray-300">
+    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+      <i class="fas fa-bolt text-lg"></i>
+      <span>Ofertas</span>
+    </a>
+    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+      <i class="fas fa-desktop text-lg"></i>
+      <span>Computadoras</span>
+    </a>
+    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+      <i class="fas fa-memory text-lg"></i>
+      <span>Placas de video</span>
+    </a>
+    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+      <i class="fas fa-microchip text-lg"></i>
+      <span>Microprocesadores</span>
+    </a>
   </nav>
+
 
   <!-- Search + Iconos -->
   <div class="flex items-center gap-4">
@@ -61,12 +74,21 @@
     </button>
   </div>
 
-  <nav class="flex flex-col gap-4 text-text dark:text-white">
-    <a href="#" class="hover:text-main">Ofertas</a>
-    <a href="#" class="hover:text-main">Computadoras</a>
-    <a href="#" class="hover:text-main">Placas de video</a>
-    <a href="#" class="hover:text-main">Microprocesadores</a>
+  <nav class="flex flex-col gap-4 text-text dark:text-white text-sm mt-4">
+    <a href="#" class="flex items-center gap-3 hover:text-main">
+      <i class="fas fa-bolt w-5"></i> Ofertas
+    </a>
+    <a href="#" class="flex items-center gap-3 hover:text-main">
+      <i class="fas fa-desktop w-5"></i> Computadoras
+    </a>
+    <a href="#" class="flex items-center gap-3 hover:text-main">
+      <i class="fas fa-memory w-5"></i> Placas de video
+    </a>
+    <a href="#" class="flex items-center gap-3 hover:text-main">
+      <i class="fas fa-microchip w-5"></i> Microprocesadores
+    </a>
   </nav>
+
 </aside>
 
 
