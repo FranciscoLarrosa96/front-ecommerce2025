@@ -13,6 +13,8 @@ export class App implements AfterViewInit, OnInit {
   protected title = 'front';
   isDarkMode = false;
   isDrawerOpen = false;
+  carritoTotal = 0;
+  carritoAnimando = false;
   productos = [
     {
       nombre: 'MSI RTX 4060 Ti Ventus 8GB',
@@ -107,5 +109,15 @@ export class App implements AfterViewInit, OnInit {
     } else {
       htmlElement.classList.remove('dark');
     }
+  }
+
+  agregarAlCarrito(producto: any) {
+    this.carritoTotal++;
+    this.carritoAnimando = true;
+  }
+
+  verProducto(producto: any) {
+    // Aquí podrías implementar la lógica para mostrar un modal o redirigir a una página de detalles del producto
+    console.log('Ver producto:', producto);
   }
 }

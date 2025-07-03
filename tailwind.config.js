@@ -1,5 +1,5 @@
 module.exports = {
-  darkMode: 'class', // Enable dark mode
+  darkMode: 'class',
   content: [
     "./src/**/*.{html,ts}",
   ],
@@ -14,7 +14,17 @@ module.exports = {
         hover: '#c6006d',
       },
       fontFamily: {
-        sans: ['Rajdhani', 'sans-serif'], // esto pisa la fuente por defecto
+        sans: ['Rajdhani', 'sans-serif'],
+      },
+      animation: {
+        pop: 'pop 0.3s ease-in-out',
+      },
+      keyframes: {
+        pop: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.3)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
     },
   },

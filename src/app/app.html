@@ -51,14 +51,16 @@
       <i class="fas fa-user"></i>
     </button>
 
-    <!-- Carrito -->
+    <!-- Carrito con contador animado -->
     <button class="relative text-text dark:text-white hover:text-main">
       <i class="fas fa-shopping-cart text-xl"></i>
       <span
-        class="absolute -top-2 -right-2 bg-main text-white text-[10px] font-semibold leading-none rounded-full w-5 h-5 flex items-center justify-center">
-        0
+        class="absolute -top-2 -right-2 bg-main text-white text-[10px] font-semibold leading-none rounded-full w-5 h-5 flex items-center justify-center"
+        [ngClass]="{ 'animate-pop': carritoAnimando }" (animationend)="carritoAnimando = false">
+        {{ carritoTotal }}
       </span>
     </button>
+
 
 
     <!-- Modo oscuro -->
@@ -132,8 +134,8 @@
 
   <!-- GRID DE PRODUCTOS -->
   <section class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-    <div *ngFor="let producto of productos" class="card bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col"
-      data-aos="fade-up">
+    <div *ngFor="let producto of productos"
+      class="card bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col" data-aos="fade-up">
       <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col relative"
         [ngClass]="{ 'opacity-50 pointer-events-none': !producto.stock }" data-aos="fade-up">
         <!-- Badge Stock -->
@@ -165,11 +167,23 @@
           <p class="text-lg font-bold text-main">{{ producto.precio | currency:'ARS' }}</p>
         </div>
 
-        <!-- Botón -->
-        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm cursor-pointer"
-          [disabled]="!producto.stock" [ngClass]="{ 'opacity-20': !producto.stock }">
-          Ver más
-        </button>
+        <!-- Contenedor de acción -->
+        <div class="flex items-center justify-between mt-auto pt-4">
+          <!-- Botón Ver más -->
+          <button class="bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm"
+            (click)="verProducto(producto)" [ngClass]="{ 'opacity-50 pointer-events-none': !producto.stock }">
+            Ver más
+          </button>
+
+          <!-- Ícono carrito -->
+          <button class="text-main hover:text-hover transition-colors" title="Agregar al carrito"
+            (click)="agregarAlCarrito(producto)" [ngClass]="{ 'opacity-50 pointer-events-none': !producto.stock }">
+            <i class="fas fa-cart-plus text-lg"></i>
+          </button>
+        </div>
+
+
+
       </div>
 
 
