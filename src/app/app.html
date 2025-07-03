@@ -53,13 +53,16 @@
 
     <!-- Carrito -->
     <button class="relative text-text dark:text-white hover:text-main">
-      <i class="fas fa-shopping-cart"></i>
+      <i class="fas fa-shopping-cart text-xl"></i>
       <span
-        class="absolute -top-1 -right-2 text-xs bg-main text-white rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        class="absolute -top-2 -right-2 bg-main text-white text-[10px] font-semibold leading-none rounded-full w-5 h-5 flex items-center justify-center">
+        0
+      </span>
     </button>
 
+
     <!-- Modo oscuro -->
-    <button class="text-text dark:text-white hover:text-main">
+    <button class="text-text dark:text-white hover:text-main" (click)="toggleDarkMode()">
       <i class="fas fa-moon"></i>
     </button>
   </div>
@@ -129,7 +132,7 @@
 
   <!-- GRID DE PRODUCTOS -->
   <section class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-    <div *ngFor="let producto of productos" class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col"
+    <div *ngFor="let producto of productos" class="card bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col"
       data-aos="fade-up">
       <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col relative"
         [ngClass]="{ 'opacity-50 pointer-events-none': !producto.stock }" data-aos="fade-up">
@@ -163,8 +166,8 @@
         </div>
 
         <!-- Botón -->
-        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm"
-          [disabled]="!producto.stock">
+        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm cursor-pointer"
+          [disabled]="!producto.stock" [ngClass]="{ 'opacity-20': !producto.stock }">
           Ver más
         </button>
       </div>
