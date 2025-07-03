@@ -14,19 +14,23 @@
 
   <!-- Menú desktop -->
   <nav class="hidden md:flex justify-center items-center gap-8 text-sm text-text dark:text-gray-300">
-    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+    <a href="#"
+      class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200 hover:bg-main/10 px-2 py-1 rounded-md">
       <i class="fas fa-bolt text-lg"></i>
       <span>Ofertas</span>
     </a>
-    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+    <a href="#"
+      class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200 hover:bg-main/10 px-2 py-1 rounded-md">
       <i class="fas fa-desktop text-lg"></i>
       <span>Computadoras</span>
     </a>
-    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+    <a href="#"
+      class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200 hover:bg-main/10 px-2 py-1 rounded-md">
       <i class="fas fa-memory text-lg"></i>
       <span>Placas de video</span>
     </a>
-    <a href="#" class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200">
+    <a href="#"
+      class="flex flex-col items-center text-xs hover:text-main transition-colors duration-200 hover:bg-main/10 px-2 py-1 rounded-md">
       <i class="fas fa-microchip text-lg"></i>
       <span>Microprocesadores</span>
     </a>
@@ -127,14 +131,30 @@
   <section class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     <div *ngFor="let producto of productos" class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col"
       data-aos="fade-up">
-      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col" data-aos="fade-up">
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col relative"
+        [ngClass]="{ 'opacity-50 pointer-events-none': !producto.stock }" data-aos="fade-up">
+        <!-- Badge Stock -->
+        <span *ngIf="producto.stock; else sinStock"
+          class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded">
+          En stock
+        </span>
+
+        <!-- Badge Sin stock -->
+        <ng-template #sinStock>
+          <span class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded">
+            Sin stock
+          </span>
+        </ng-template>
+
+        <!-- Imagen -->
         <img [src]="producto.thumb" [alt]="producto.nombre" class="w-full h-40 object-contain mb-3" />
+
+        <!-- Nombre -->
         <h3 class="font-bold text-base mb-2 min-h-[48px]">
           {{ producto.nombre }}
         </h3>
 
-
-        <!-- Bloque precio -->
+        <!-- Precio -->
         <div class="min-h-[48px] flex flex-col justify-end">
           <p *ngIf="producto.precioOriginal" class="text-sm text-gray-500 line-through">
             {{ producto.precioOriginal | currency:'ARS' }}
@@ -142,9 +162,13 @@
           <p class="text-lg font-bold text-main">{{ producto.precio | currency:'ARS' }}</p>
         </div>
 
-        <!-- Botón siempre abajo -->
-        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm">Ver más</button>
+        <!-- Botón -->
+        <button class="mt-auto bg-main hover:bg-hover text-white rounded-md px-4 py-2 text-sm"
+          [disabled]="!producto.stock">
+          Ver más
+        </button>
       </div>
+
 
     </div>
   </section>

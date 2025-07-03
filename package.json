@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-prod": "ng build --configuration production --base-href \"/front-ecommerce2025/\"",
+    "deploy": "npx angular-cli-ghpages --dir=dist/front/browser"
   },
   "prettier": {
     "overrides": [
@@ -36,6 +38,7 @@
     "@angular/compiler-cli": "^20.0.0",
     "@types/aos": "^3.0.7",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "autoprefixer": "^10.4.21",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",

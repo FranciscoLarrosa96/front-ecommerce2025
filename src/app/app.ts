@@ -18,6 +18,7 @@ export class App implements AfterViewInit {
       precioOriginal: 837900,
       thumb: 'assets/img/rtx4060ti-thumb.avif',
       imagen: 'assets/img/rtx4060ti.avif',
+      stock: true
     },
     {
       nombre: 'Gigabyte RTX 4070 12GB',
@@ -25,6 +26,7 @@ export class App implements AfterViewInit {
       precioOriginal: null,
       thumb: 'assets/img/rtx4070-thumb.avif',
       imagen: 'assets/img/rtx4070.avif',
+      stock: false
     },
     {
       nombre: 'ASUS ROG Strix RTX 4080 16GB',
@@ -32,6 +34,7 @@ export class App implements AfterViewInit {
       precioOriginal: 1600000,
       thumb: 'assets/img/rtx4080-thumb.avif',
       imagen: 'assets/img/rtx4080.avif',
+      stock: true
     },
     {
       nombre: 'Gigabyte RTX 4090 24GB',
@@ -39,6 +42,7 @@ export class App implements AfterViewInit {
       precioOriginal: 2700000,
       thumb: 'assets/img/rtx4090-thumb.avif',
       imagen: 'assets/img/rtx4090.avif',
+      stock: false
     }
   ];
   ngAfterViewInit() {
