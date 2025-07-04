@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import * as AOS from 'aos';
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule,Header, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -12,43 +14,7 @@ export class App implements AfterViewInit, OnInit {
 
   protected title = 'front';
   isDarkMode = false;
-  isDrawerOpen = false;
-  carritoTotal = 0;
-  carritoAnimando = false;
-  productos = [
-    {
-      nombre: 'MSI RTX 4060 Ti Ventus 8GB',
-      precio: 772000,
-      precioOriginal: 837900,
-      thumb: 'assets/img/rtx4060ti-thumb.avif',
-      imagen: 'assets/img/rtx4060ti.avif',
-      stock: true
-    },
-    {
-      nombre: 'Gigabyte RTX 4070 12GB',
-      precio: 1015000,
-      precioOriginal: null,
-      thumb: 'assets/img/rtx4070-thumb.avif',
-      imagen: 'assets/img/rtx4070.avif',
-      stock: false
-    },
-    {
-      nombre: 'ASUS ROG Strix RTX 4080 16GB',
-      precio: 1500000,
-      precioOriginal: 1600000,
-      thumb: 'assets/img/rtx4080-thumb.avif',
-      imagen: 'assets/img/rtx4080.avif',
-      stock: true
-    },
-    {
-      nombre: 'Gigabyte RTX 4090 24GB',
-      precio: 2500000,
-      precioOriginal: 2700000,
-      thumb: 'assets/img/rtx4090-thumb.avif',
-      imagen: 'assets/img/rtx4090.avif',
-      stock: false
-    }
-  ];
+  
 
 
   ngOnInit(): void {
@@ -111,13 +77,4 @@ export class App implements AfterViewInit, OnInit {
     }
   }
 
-  agregarAlCarrito(producto: any) {
-    this.carritoTotal++;
-    this.carritoAnimando = true;
-  }
-
-  verProducto(producto: any) {
-    // Aquí podrías implementar la lógica para mostrar un modal o redirigir a una página de detalles del producto
-    console.log('Ver producto:', producto);
-  }
 }
