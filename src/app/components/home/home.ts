@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
+import { HelperService } from '../../shared/helper';
+import { CartService } from '../../services/cart';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import { Component, effect } from '@angular/core';
 export class Home {
 
   isDrawerOpen = false;
-
+  showFilter = false;
 
   productos = [
     {
@@ -46,23 +48,31 @@ export class Home {
       stock: false
     }
   ];
-
+  private _helperSvc = inject(HelperService);
+  private _cartSvc = inject(CartService);
   /**
    * Detecta si el drawer está abierto
    * @param producto 
    */
   toggleDrawer = effect(() => {
-
+    this.isDrawerOpen = this._helperSvc.isDrawerOpen();
   })
 
 
 
 
+  /**
+   * Agrega un producto al carrito
+   * @param producto 
+   */
   agregarAlCarrito(producto: any) {
-    // this.carritoTotal++;
-    // this.carritoAnimando = true;
+    this._cartSvc.agregar(producto);
   }
 
+  /**
+   * Muestra los detalles de un producto
+   * @param producto 
+   */
   verProducto(producto: any) {
     // Aquí podrías implementar la lógica para mostrar un modal o redirigir a una página de detalles del producto
     console.log('Ver producto:', producto);

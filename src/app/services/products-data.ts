@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class Product {
-  cartSignal = signal(0);
+
   
 
   constructor() { }

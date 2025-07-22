@@ -18,8 +18,6 @@ export class App implements AfterViewInit, OnInit {
 
 
   ngOnInit(): void {
-    this.configDarkMode();
-    this.updateDarkModeClass();
   }
 
 

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject } from '@angular/core';
-import { Product } from '../../services/product';
+import { Component, effect, inject, signal } from '@angular/core';
+import { CartService } from '../../services/cart';
+import { HelperService } from '../../shared/helper';
+
 
 @Component({
   selector: 'app-header',
@@ -11,11 +13,20 @@ import { Product } from '../../services/product';
 export class Header {
   carritoTotal = 0;
   carritoAnimando = false;
-  private cartSvc = inject(Product);
+  private _helperSvc = inject(HelperService);
+  private cartSvc = inject(CartService);
   /**
    * Cart Effect
    */
   cartEffect = effect(() => {
-    this.carritoTotal = this.cartSvc.cartSignal();
+    this.carritoTotal = this.cartSvc.getTotal();
+    this.carritoAnimando = true;
   });
+
+  /**
+   * Detecta si el drawer está abierto
+   */
+  openDrawer() {
+    this._helperSvc.openDrawer();
+  }
 }
