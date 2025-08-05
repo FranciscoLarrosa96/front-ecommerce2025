@@ -1,0 +1,124 @@
+// Footer personalizado
+footer {
+  position: relative;
+  
+  // Efectos de hover para los enlaces
+  a {
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+  
+  // Animación para redes sociales
+  .social-link {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+  }
+  
+  // Efecto de partículas de fondo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(221, 14, 124, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(107, 29, 104, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(221, 14, 124, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+// Animaciones para los elementos del footer
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-section {
+  animation: slideInFromBottom 0.6s ease-out;
+  
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.3s; }
+}
+
+// Hover effects mejorados
+.contact-item {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    
+    .contact-icon {
+      background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Animación para métodos de pago
+.payment-method {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  footer {
+    .grid {
+      gap: 2rem;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
+    
+    .payment-methods {
+      justify-content: center;
+    }
+  }
+}
+
+// Gradiente animado para el borde inferior
+.footer-gradient {
+  background: linear-gradient(-45deg, var(--main-color), var(--secondary-color), var(--main-color), var(--secondary-color));
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
