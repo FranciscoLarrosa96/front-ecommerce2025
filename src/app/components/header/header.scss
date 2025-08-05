@@ -1,0 +1,153 @@
+// Header personalizado
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+// Mega menús
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+// Animaciones para mega menús
+nav > div > div {
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover nav > div > div,
+.group:hover .absolute {
+  transform: translateY(0);
+}
+
+// Animaciones para el hover en categorías
+nav a {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+// Efecto de búsqueda
+.search-input {
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(221, 14, 124, 0.1);
+  }
+}
+
+// Gradiente personalizado para el header
+.header-gradient {
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--secondary-color) 100%);
+}
+
+// Animación suave para el carrito
+@keyframes cartBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+.cart-bounce {
+  animation: cartBounce 0.6s ease-in-out;
+}
+
+// Estilos para los mega menús
+.mega-menu {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
+  
+  &.dark {
+    background: rgba(31, 41, 55, 0.95);
+  }
+}
+
+// Hover effects para items del menú
+.menu-item {
+  position: relative;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 100%;
+      background: var(--main-color);
+      border-radius: 2px;
+    }
+  }
+}
+
+// Separadores visuales en mega menús
+.menu-section {
+  border-left: 1px solid rgba(221, 14, 124, 0.1);
+  padding-left: 1.5rem;
+  
+  &:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .mobile-categories {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+// Animación de entrada para mega menús
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.group:hover .absolute {
+  animation: slideDown 0.3s ease-out;
+}
